@@ -1,1 +1,9 @@
 Hello,this is week1-gitbasis master branch.
+
+如何生成一个空白分支：
+1.git checkout --orphan + test
+该命令会创建一个名为test的分支，并且该分支下有前一个分支所有文件。
+2.删除所有内容：
+git rm -rf .(git rm/rm删除区别见branch中test.txt文件）
+3.正常流程提交
+git commit -m"message"
