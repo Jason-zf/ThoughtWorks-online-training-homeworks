@@ -5,8 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class StudentTest {
     private Student student;
@@ -18,17 +17,23 @@ public class StudentTest {
 
     @Test
     public void shold_return_name_when_get_student_name() {
-        assertThat(student.getName(), is("张小明"));
+        assertEquals(student.getName(), "张小明");
     }
 
     @Test
     public void should_return_id_when_get_student_Id() {
-        assertThat(student.getId(), is(2015124001));
+        assertEquals(student.getId(), Integer.valueOf(2015124001));
     }
 
     @Test
-    public void should_return_student_infos_when_getDisplay() {
-        assertThat(student.getDisplay(),is("张小明|90|95|85|90.0|270"));
+    public void should_return_student_info_when_getDisplay() {
+        assertEquals(student.getDisplay(), "张小明|90|95|85|90.0|270");
     }
 
+    @Test
+    public void shold_get_student_when_new_student_through_string() {
+        String string = "张小明，2015124001，语文：90，数学：95，英语：85";
+        Student student1 = new Student(string);
+        assertEquals(student1, student);
+    }
 }

@@ -1,5 +1,6 @@
 package com.tw;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
@@ -10,6 +11,26 @@ public class Student {
     public Student(String name, int id, List<Subject> subjects) {
         this.name = name;
         this.id = id;
+        this.subjects = subjects;
+    }
+
+    public Student(String string) {
+        String[] stuInfo = string.split("，");
+        if (stuInfo.length < 2 || isNumeric(stuInfo[1]) == false) {
+            System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：");
+            return;
+        }
+        List<Subject> subjects = new ArrayList<>();
+        for (int i = 2; i < stuInfo.length; ++i) {
+            String[] subInfo = stuInfo[i].split("：");
+            if (subInfo.length != 2 || isNumeric(subInfo[1]) == false) {
+                System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：");
+                return;
+            }
+            subjects.add(new Subject(subInfo[0], Integer.valueOf(subInfo[1])));
+        }
+        this.name = stuInfo[0];
+        this.id = Integer.valueOf(stuInfo[1]);
         this.subjects = subjects;
     }
 
@@ -36,5 +57,19 @@ public class Student {
         }
         res = res + "|" + String.valueOf((double) getTotalScore() / subjects.size()) + "|" + String.valueOf(getTotalScore());
         return res;
+    }
+
+    public static boolean isNumeric(String string) {
+        for (int i = 0; i < string.length(); ++i) {
+            if (Character.isDigit(string.charAt(i)) == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this == null || obj == null) ? false : this.id == ((Student) obj).getId();
     }
 }
