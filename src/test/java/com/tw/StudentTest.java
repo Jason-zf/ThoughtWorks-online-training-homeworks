@@ -36,4 +36,5 @@ public class StudentTest {
         Student student1 = new Student(string);
         assertEquals(student1, student);
     }
+
 }
