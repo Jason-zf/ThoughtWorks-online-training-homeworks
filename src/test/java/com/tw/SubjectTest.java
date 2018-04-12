@@ -22,7 +22,7 @@ public class SubjectTest {
 
     @Test
     public void should_return_score_when_get_subject_score() {
-        assertThat(subject.getScore(), is(90));
+        assertThat(subject.getId(), is(90));
     }
 
     @Test

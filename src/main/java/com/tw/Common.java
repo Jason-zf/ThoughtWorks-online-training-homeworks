@@ -14,6 +14,16 @@ public class Common {
         this.id = id;
     }
 
+    public Common(String string) {
+        String splitor = (string.contains("：") && string.contains("，")) == true ? "，" : "：";
+        String[] strings = string.split(splitor);
+        if ((strings.length < 2) || Student.isNumeric(strings[1]) == false) {
+            System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
+        }
+        this.name = strings[0];
+        this.id = Integer.valueOf(strings[1]);
+    }
+
     public String getName() {
         return name;
     }
