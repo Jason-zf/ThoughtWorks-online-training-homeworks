@@ -30,4 +30,6 @@ public class Subject {
     public boolean equals(Object obj) {
         return (this == null || obj == null) ? false : this.name.equals(((Subject) obj).getName()) && this.score == ((Subject) obj).getScore();
     }
+
+    public void getDisplay()
 }

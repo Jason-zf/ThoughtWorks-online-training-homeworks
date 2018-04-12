@@ -22,12 +22,7 @@ public class Student {
         }
         List<Subject> subjects = new ArrayList<>();
         for (int i = 2; i < stuInfo.length; ++i) {
-            String[] subInfo = stuInfo[i].split("：");
-            if (subInfo.length != 2 || isNumeric(subInfo[1]) == false) {
-                System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：");
-                return;
-            }
-            subjects.add(new Subject(subInfo[0], Integer.valueOf(subInfo[1])));
+            subjects.add(new Subject(stuInfo[i]));
         }
         this.name = stuInfo[0];
         this.id = Integer.valueOf(stuInfo[1]);
