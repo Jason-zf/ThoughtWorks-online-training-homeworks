@@ -24,7 +24,7 @@ public class LibraryTest {
     @Test
     public void should_add_student_successfully_when_add() {
         classUnderTest.add("张小明，2015124001，语文：90，数学：95，英语：85");
-        assertEquals(outContent.toString(), "");
+        assertEquals(outContent.toString(), "学生张小明的成绩被添加\n");
     }
 
     @Test

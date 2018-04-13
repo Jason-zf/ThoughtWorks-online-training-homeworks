@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class StudentTest {
     private Student student;
@@ -40,7 +41,7 @@ public class StudentTest {
     public void shold_return_boolean_when_initStu() {
         String string = "张小明，2015124001，语文：90，数学：95，英语：85";
         student = new Student(string);
-        assertEquals(student.isInit, true);
+        assertTrue(student.isInit);
     }
 
 }

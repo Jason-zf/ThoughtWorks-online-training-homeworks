@@ -6,6 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class SubjectTest {
     private Subject subject;
@@ -22,7 +23,7 @@ public class SubjectTest {
 
     @Test
     public void should_return_score_when_get_subject_score() {
-        assertThat(subject.getId(), is(90.0));
+        assertTrue(subject.getId() == 90);
     }
 
     @Test

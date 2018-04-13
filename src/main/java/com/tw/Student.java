@@ -6,10 +6,6 @@ import java.util.List;
 public class Student extends Common {
     private List<Subject> subjects;
 
-    public Student() {
-        subjects = new ArrayList<>();
-    }
-
     public Student(String name, int id, List<Subject> subjects) {
         super(name, id);
         this.subjects = subjects;
