@@ -22,19 +22,25 @@ public class StudentTest {
 
     @Test
     public void should_return_id_when_get_student_Id() {
-        assertEquals(student.getId(), Integer.valueOf(2015124001));
+        assertEquals(student.getId().intValue(), 2015124001);
     }
 
     @Test
     public void should_return_student_info_when_getDisplay() {
-        assertEquals(student.getDisplay(), "张小明|90|95|85|90.0|270");
+        String res = student.getDisplay();
+        assertEquals(student.getDisplay(), "张小明|90|95|85|90|270\n");
     }
 
     @Test
-    public void shold_get_student_when_new_student_through_string() {
+    public void should_return_subjects_when_get_student_subjects() {
+        assertEquals(student.getSubjects(), Arrays.asList(new Subject("语文", 90), new Subject("数学", 95), new Subject("英语", 85)));
+    }
+
+    @Test
+    public void shold_return_boolean_when_initStu() {
         String string = "张小明，2015124001，语文：90，数学：95，英语：85";
-        Student student1 = new Student(string);
-        assertEquals(student1, student);
+        student = new Student(string);
+        assertEquals(student.isInit, true);
     }
 
 }

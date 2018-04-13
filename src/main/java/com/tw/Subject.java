@@ -2,12 +2,12 @@ package com.tw;
 
 public class Subject extends Common {
 
-    public Subject() {
-
-    }
-
     public Subject(String name, int score) {
         super(name, score);
+    }
+
+    public Subject(String string) {
+        super(string);
     }
 
     @Override

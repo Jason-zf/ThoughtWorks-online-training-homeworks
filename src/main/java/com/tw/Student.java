@@ -10,21 +10,25 @@ public class Student extends Common {
         subjects = new ArrayList<>();
     }
 
-    public boolean initStu(String string) {
-        if (!init(string)) {
-            return false;
-        }
-        String[] stuInfo = string.split("，");
-        List<Subject> subjects = new ArrayList<>();
-        Subject subject = new Subject();
-        for (int i = 2; i < stuInfo.length; ++i) {
-            if (!subject.init(stuInfo[i])) {
-                return false;
-            }
-            subjects.add(subject);
-        }
+    public Student(String name, int id, List<Subject> subjects) {
+        super(name, id);
         this.subjects = subjects;
-        return true;
+    }
+
+    public Student(String string) {
+        super(string);
+        if (isInit == true) {
+            String[] stuInfo = string.split("，");
+            List<Subject> subjects = new ArrayList<>();
+            for (int i = 2; i < stuInfo.length; ++i) {
+                Subject subject = new Subject(stuInfo[i]);
+                if (isInit == false) {
+                    return;
+                }
+                subjects.add(subject);
+            }
+            this.subjects = subjects;
+        }
     }
 
     public List<Subject> getSubjects() {

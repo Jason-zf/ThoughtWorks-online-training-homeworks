@@ -11,8 +11,8 @@ public class Library {
     }
 
     public boolean add(String string) {
-        Student student = new Student();
-        if (!student.initStu(string)) {
+        Student student = new Student(string);
+        if (student.isInit == false) {
             return false;
         }
         students.add(student);

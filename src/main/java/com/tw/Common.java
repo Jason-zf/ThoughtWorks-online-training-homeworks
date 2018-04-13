@@ -4,8 +4,10 @@ package com.tw;
 public class Common {
     private String name;
     private double id;
+    public boolean isInit;
 
     public Common() {
+        isInit=false;
 
     }
 
@@ -14,16 +16,16 @@ public class Common {
         this.id = id;
     }
 
-    public boolean init(String string) {
+    public Common(String string) {
         String splitor = (string.contains("：") && string.contains("，")) == true ? "，" : "：";
         String[] strings = string.split(splitor);
         if ((strings.length < 2) || Student.isNumeric(strings[1]) == false) {
-            System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
-            return false;
+            isInit=false;
+            return;
         }
         this.name = strings[0];
         this.id = Double.valueOf(strings[1]);
-        return true;
+        isInit=true;
     }
 
     public String getName() {
