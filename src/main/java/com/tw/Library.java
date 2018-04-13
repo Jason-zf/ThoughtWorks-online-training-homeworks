@@ -58,5 +58,14 @@ public class Library {
         return null;
     }
 
+    public Student getStudent(int id,List<Student> students) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
 }
 
