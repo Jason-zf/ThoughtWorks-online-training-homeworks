@@ -12,6 +12,6 @@ public class Subject extends Common {
 
     @Override
     public String getDisplay() {
-        return this.getName() + "|" + String.valueOf(this.getId());
+        return numberToString(this.getId());
     }
 }

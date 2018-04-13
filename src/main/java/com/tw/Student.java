@@ -6,8 +6,8 @@ import java.util.List;
 public class Student extends Common {
     private List<Subject> subjects;
 
-    public Student(String name, int id, List<Subject> subjects) {
-       super(name,id);
+    public Student(String name, double id, List<Subject> subjects) {
+        super(name, id);
         this.subjects = subjects;
     }
 
@@ -21,8 +21,8 @@ public class Student extends Common {
         this.subjects = subjects;
     }
 
-    public Integer getTotalScore() {
-        int total = 0;
+    public Double getTotalScore() {
+        double total = 0;
         for (Subject subject : subjects) {
             total += subject.getId();
         }
@@ -33,10 +33,13 @@ public class Student extends Common {
     public String getDisplay() {
         String res = this.getName();
         for (Subject subject : subjects) {
-            res = res + "|" + String.valueOf(subject.getId());
+            res = res + "|" + String.valueOf(subject.getDisplay());
         }
-        res = res + "|" + String.valueOf((double) getTotalScore() / subjects.size()) + "|" + String.valueOf(getTotalScore());
+        res = res + "|" + numberToString(getTotalScore() / subjects.size()) + "|" + numberToString(getTotalScore()) + "\n";
         return res;
     }
 
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
 }

@@ -3,13 +3,13 @@ package com.tw;
 //公有类
 public class Common {
     private String name;
-    private int id;
+    private double id;
 
     public Common() {
 
     }
 
-    public Common(String name, int id) {
+    public Common(String name, double id) {
         this.name = name;
         this.id = id;
     }
@@ -21,14 +21,14 @@ public class Common {
             System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
         }
         this.name = strings[0];
-        this.id = Integer.valueOf(strings[1]);
+        this.id = Double.valueOf(strings[1]);
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getId() {
+    public Double getId() {
         return id;
     }
 
@@ -53,5 +53,10 @@ public class Common {
     public String getDisplay() {
         return "";
     }
+
+    public static String numberToString(Double number) {
+        return (number.intValue() - number) == 0.0 ? String.valueOf(number.intValue()) : number.toString();
+    }
+
 
 }
