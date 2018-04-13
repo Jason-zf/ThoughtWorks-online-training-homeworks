@@ -6,19 +6,29 @@ import java.util.List;
 public class Student extends Common {
     private List<Subject> subjects;
 
-    public Student(String name, double id, List<Subject> subjects) {
-        super(name, id);
-        this.subjects = subjects;
+    public Student() {
+        subjects = new ArrayList<>();
     }
 
-    public Student(String string) {
-        super(string);
+    public boolean initStu(String string) {
+        if (!init(string)) {
+            return false;
+        }
         String[] stuInfo = string.split("，");
         List<Subject> subjects = new ArrayList<>();
+        Subject subject = new Subject();
         for (int i = 2; i < stuInfo.length; ++i) {
-            subjects.add(new Subject(stuInfo[i]));
+            if (!subject.init(stuInfo[i])) {
+                return false;
+            }
+            subjects.add(subject);
         }
         this.subjects = subjects;
+        return true;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
     public Double getTotalScore() {
@@ -39,7 +49,4 @@ public class Student extends Common {
         return res;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
-    }
 }

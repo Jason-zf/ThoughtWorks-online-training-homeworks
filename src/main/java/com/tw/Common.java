@@ -14,14 +14,16 @@ public class Common {
         this.id = id;
     }
 
-    public Common(String string) {
+    public boolean init(String string) {
         String splitor = (string.contains("：") && string.contains("，")) == true ? "，" : "：";
         String[] strings = string.split(splitor);
         if ((strings.length < 2) || Student.isNumeric(strings[1]) == false) {
-            System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
+            System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
+            return false;
         }
         this.name = strings[0];
         this.id = Double.valueOf(strings[1]);
+        return true;
     }
 
     public String getName() {
@@ -42,12 +44,7 @@ public class Common {
     }
 
     public static boolean isNumeric(String string) {
-        for (int i = 0; i < string.length(); ++i) {
-            if (Character.isDigit(string.charAt(i)) == false) {
-                return false;
-            }
-        }
-        return true;
+        return string.matches("-?[0-9]+.*[0-9]*");
     }
 
     public String getDisplay() {

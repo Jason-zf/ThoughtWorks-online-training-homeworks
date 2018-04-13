@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -23,7 +22,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_correct_add_student_when_add() {
+    public void should_add_student_successfully_when_add() {
         classUnderTest.add("张小明，2015124001，语文：90，数学：95，英语：85");
         assertEquals(outContent.toString(), "");
     }
@@ -46,12 +45,6 @@ public class LibraryTest {
         String systemOut = "成绩单\n" + "姓名|语文|数学|英语|平均分|总分\n" + "========================\n" + "张小明|90|95|85|90|270\n" + "李小鹏|80.5|89|90|86.5|259.5\n" + "========================\n" + "全班总分平均数：264.75\n" +
                 "全班总分中位数：264.75\n";
         assertEquals(outContent.toString().endsWith(systemOut), true);
-    }
-
-    @Test
-    public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
 
     @Test
