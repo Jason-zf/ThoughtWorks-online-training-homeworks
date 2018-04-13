@@ -2,6 +2,7 @@ package com.thoughtworks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class FizzBuzzGame {
@@ -18,6 +19,19 @@ public class FizzBuzzGame {
 
     public Integer getCount() {
         return count;
+    }
+
+    public List<Integer> generateThreeDifferentNumbers() {
+        Random random = new Random();
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < 3; ) {
+            int num = random.nextInt(10);
+            if (!res.contains(num)) {
+                res.add(num);
+                ++i;
+            }
+        }
+        return res;
     }
 }
 
