@@ -3,10 +3,10 @@ package com.thoughtworks;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class FizzBuzzGameTest {
@@ -41,7 +41,6 @@ public class FizzBuzzGameTest {
         }
     }
 
-
     @Test
     public void should_return_Fizz_when_have_3() {
         String result = fizzBuzzGame.getSingleResult(3);
@@ -67,6 +66,12 @@ public class FizzBuzzGameTest {
     }
 
     @Test
+    public void should_return_FizzWhizz_when_have_3_7() {
+        String result = fizzBuzzGame.getSingleResult(21);
+        assertEquals(result, "FizzWhizz");
+    }
+
+    @Test
     public void should_return_BuzzWhizz_when_have_5_7() {
         String result = fizzBuzzGame.getSingleResult(70);
         assertEquals(result, "BuzzWhizz");
@@ -76,6 +81,13 @@ public class FizzBuzzGameTest {
     public void shold_return_Fizz_when_contain_3() {
         String result = fizzBuzzGame.getSingleResult(35);
         assertEquals(result, "Fizz");
+    }
+
+    @Test
+    public void should_return_correct_info_from_0_to_20() {
+        List<String> result = Arrays.asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "Whizz", "8", "Fizz", "Buzz", "11", "Fizz", "Fizz", "Whizz", "FizzBuzz", "16", "17", "Fizz", "19", "Buzz");
+
+        assertEquals(result, fizzBuzzGame.getResults());
     }
 
 }

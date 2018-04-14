@@ -18,7 +18,7 @@ public class FizzBuzzGame {
         specialNumbers.add(3);
         specialNumbers.add(5);
         specialNumbers.add(7);
-        count = 100;
+        count = 20;
     }
 
     public void start(int count) {
@@ -28,9 +28,9 @@ public class FizzBuzzGame {
 
     public List<String> getResults() {
         List<String> results = new ArrayList<>();
-        for (Integer i = 0; i < count; ++i) {
+        for (Integer i = 1; i <= count; ++i) {
             String singleResult = getSingleResult(i);
-            if (singleResult != "") {
+            if (!singleResult.isEmpty()) {
                 results.add(singleResult);
                 continue;
             }
