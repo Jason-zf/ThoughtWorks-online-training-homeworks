@@ -2,9 +2,7 @@ package com.thoughtworks;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -46,32 +44,38 @@ public class FizzBuzzGameTest {
 
     @Test
     public void should_return_Fizz_when_have_3() {
-        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(3);
+        String result = fizzBuzzGame.getSingleResult(3);
         assertEquals(result, "Fizz");
     }
 
     @Test
     public void should_return_Fizz_when_have_5() {
-        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(5);
+        String result = fizzBuzzGame.getSingleResult(5);
         assertEquals(result, "Buzz");
     }
 
     @Test
     public void should_return_Fizz_when_have_7() {
-        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(7);
+        String result = fizzBuzzGame.getSingleResult(7);
         assertEquals(result, "Whizz");
     }
 
     @Test
     public void should_return_FizzBuzz_when_have_3_5() {
-        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(15);
+        String result = fizzBuzzGame.getSingleResult(15);
         assertEquals(result, "FizzBuzz");
     }
 
     @Test
     public void should_return_BuzzWhizz_when_have_5_7() {
-        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(70);
+        String result = fizzBuzzGame.getSingleResult(70);
         assertEquals(result, "BuzzWhizz");
+    }
+
+    @Test
+    public void shold_return_Fizz_when_contain_3() {
+        String result = fizzBuzzGame.getSingleResult(35);
+        assertEquals(result, "Fizz");
     }
 
 }

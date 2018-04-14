@@ -29,18 +29,20 @@ public class FizzBuzzGame {
     public List<String> getResults() {
         List<String> results = new ArrayList<>();
         for (Integer i = 0; i < count; ++i) {
-            if (i.toString().contains(specialNumbers.get(0).toString())) {
-                results.add(FizzBuzzWhizz.Fizz.toString());
+            String singleResult = getSingleResult(i);
+            if (singleResult != "") {
+                results.add(singleResult);
                 continue;
             }
-            if (getResultsDividebySpecialNumbers(i) != "") {
-                results.add(getResultsDividebySpecialNumbers(i));
-            }
+            results.add(i.toString());
         }
         return results;
     }
 
-    public String getResultsDividebySpecialNumbers(Integer integer) {
+    public String getSingleResult(Integer integer) {
+        if (integer.toString().contains(specialNumbers.get(0).toString())) {
+            return FizzBuzzWhizz.Fizz.toString();
+        }
         return ((integer % specialNumbers.get(0)) == 0 ? FizzBuzzWhizz.Fizz.toString() : "") + ((integer % specialNumbers.get(1)) == 0 ? FizzBuzzWhizz.Buzz.toString() : "") + ((integer % specialNumbers.get(2)) == 0 ? FizzBuzzWhizz.Whizz.toString() : "");
     }
 
