@@ -23,7 +23,6 @@ public class FizzBuzzGame {
 
     public void start(int count) {
         this.count = count;
-        specialNumbers = generateThreeDifferentNumbers();
     }
 
     public List<String> getResults() {
@@ -50,7 +49,7 @@ public class FizzBuzzGame {
         return count;
     }
 
-    public List<Integer> generateThreeDifferentNumbers() {
+    public List<Integer> setSpecialNumbers() {
         Random random = new Random();
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < 3; ) {
@@ -60,6 +59,7 @@ public class FizzBuzzGame {
                 ++i;
             }
         }
+        this.specialNumbers = res;
         return res;
     }
 }

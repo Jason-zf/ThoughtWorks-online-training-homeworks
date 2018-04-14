@@ -30,7 +30,7 @@ public class FizzBuzzGameTest {
 
     @Test
     public void should_return_three_different_number_when_generate_numbers() {
-        List<Integer> numbers = fizzBuzzGame.generateThreeDifferentNumbers();
+        List<Integer> numbers = fizzBuzzGame.setSpecialNumbers();
         assertEquals(numbers.size(), 3);
 
         for (int i = 0; i < 3; ++i) {
