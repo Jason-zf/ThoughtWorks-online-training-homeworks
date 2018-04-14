@@ -43,8 +43,35 @@ public class FizzBuzzGameTest {
         }
     }
 
+
     @Test
     public void should_return_Fizz_when_have_3() {
-
+        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(3);
+        assertEquals(result, "Fizz");
     }
+
+    @Test
+    public void should_return_Fizz_when_have_5() {
+        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(5);
+        assertEquals(result, "Buzz");
+    }
+
+    @Test
+    public void should_return_Fizz_when_have_7() {
+        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(7);
+        assertEquals(result, "Whizz");
+    }
+
+    @Test
+    public void should_return_FizzBuzz_when_have_3_5() {
+        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(15);
+        assertEquals(result, "FizzBuzz");
+    }
+
+    @Test
+    public void should_return_BuzzWhizz_when_have_5_7() {
+        String result = fizzBuzzGame.getResultsDividebySpecialNumbers(70);
+        assertEquals(result, "BuzzWhizz");
+    }
+
 }
