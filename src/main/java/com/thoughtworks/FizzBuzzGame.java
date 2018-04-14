@@ -11,12 +11,7 @@ public class FizzBuzzGame {
     private List<Integer> specialNumbers = new ArrayList<>();
 
     private enum FizzBuzzWhizz {
-        FIZZ, BUZZ, WHIZZ;
-
-        @Override
-        public String toString() {
-            return super.toString().charAt(0) + super.toString().toLowerCase().substring(1, super.toString().length());
-        }
+        Fizz, Buzz, Whizz
     }
 
     public FizzBuzzGame() {
@@ -45,9 +40,9 @@ public class FizzBuzzGame {
 
     public String getSingleResult(Integer integer) {
         if (integer.toString().contains(specialNumbers.get(0).toString())) {
-            return FizzBuzzWhizz.FIZZ.toString();
+            return FizzBuzzWhizz.Fizz.toString();
         }
-        return ((integer % specialNumbers.get(0)) == 0 ? FizzBuzzWhizz.FIZZ.toString() : "") + ((integer % specialNumbers.get(1)) == 0 ? FizzBuzzWhizz.BUZZ.toString() : "") + ((integer % specialNumbers.get(2)) == 0 ? FizzBuzzWhizz.WHIZZ.toString() : "");
+        return ((integer % specialNumbers.get(0)) == 0 ? FizzBuzzWhizz.Fizz.toString() : "") + ((integer % specialNumbers.get(1)) == 0 ? FizzBuzzWhizz.Buzz.toString() : "") + ((integer % specialNumbers.get(2)) == 0 ? FizzBuzzWhizz.Whizz.toString() : "");
     }
 
     public Integer getCount() {
