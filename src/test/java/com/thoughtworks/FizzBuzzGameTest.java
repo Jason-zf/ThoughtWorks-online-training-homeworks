@@ -19,7 +19,7 @@ public class FizzBuzzGameTest {
 
     @Test
     public void should_return_student_count_when_getCount() {
-        assertEquals(fizzBuzzGame.getCount(), null);
+        assertEquals(fizzBuzzGame.getCount(), Integer.valueOf(20));
     }
 
     @Test
