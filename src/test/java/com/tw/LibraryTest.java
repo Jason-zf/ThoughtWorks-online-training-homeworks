@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -16,6 +17,7 @@ public class LibraryTest {
     private Library classUnderTest;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private String string, string1;
+    List<Subject> subjects;
 
     @Before
     public void setUp() {
@@ -23,12 +25,12 @@ public class LibraryTest {
         System.setOut(new PrintStream(outContent));
         string = "张小明，2015124001，语文：90，数学：95，英语：85";
         string1 = "李小鹏，2015124002，语文：80.5，数学：89，英语：90";
+        subjects = Arrays.asList(new Subject("语文", 90), new Subject("数学", 95), new Subject("英语", 85));
     }
 
     @Test
     public void should_add_student_successfully_when_add() {
-        classUnderTest.add(string);
-        assertEquals(outContent.toString(), "学生张小明的成绩被添加\n");
+        assertTrue(classUnderTest.add(string));
     }
 
     @Test
@@ -36,8 +38,7 @@ public class LibraryTest {
         classUnderTest.add(string);
         classUnderTest.add(string1);
 
-        assertEquals(classUnderTest.getStudent(2015124001), new Student(string));
-        assertEquals(classUnderTest.getStudent(2015124002), new Student(string1));
+        assertEquals(new Student("", 2015124001, subjects), classUnderTest.getStudent(2015124001));
     }
 
     @Test
@@ -55,7 +56,7 @@ public class LibraryTest {
     public void testMockClass() throws Exception {
         Student student = mock(Student.class);
 
-        when(student.getId()).thenReturn((double) 2015124001);
+        when(student.getId()).thenReturn(2015124001);
         classUnderTest.getStudent(2015124001, Arrays.asList(student));
 
         assertTrue(classUnderTest.getStudent(2015124001, Arrays.asList(student)) == student);
