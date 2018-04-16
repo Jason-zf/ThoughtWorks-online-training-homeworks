@@ -2,6 +2,7 @@ package com.tw;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Library {
@@ -9,6 +10,25 @@ public class Library {
 
     public Library() {
         students = new ArrayList<>();
+        System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
+    }
+
+    public void accept(int commandNum) {
+        Scanner scanner = new Scanner(System.in);
+        switch (commandNum) {
+            case 1:
+                System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
+                if (add(scanner.next())) {
+                    System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
+                }
+                break;
+            case 2:
+                System.out.print("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
+                print(scanner.next());
+                break;
+            case 3:
+                System.exit(0);
+        }
     }
 
     public boolean add(String string) {
@@ -48,7 +68,6 @@ public class Library {
                 scores.add(student.getTotalScore());
             }
         }
-        Double avg = (scores.get(scores.size() / 2 - 1) + scores.get(scores.size() / 2)) / 2.0;
         String medimum = scores.size() % 2 == 0 ? Student.numberToString((scores.get(scores.size() / 2 - 1) + scores.get(scores.size() / 2)) / 2.0) : Student.numberToString(scores.get(scores.size() / 2));
         res = res + "========================\n" + "全班总分平均数：" + Student.numberToString(scores.stream().mapToDouble(value -> value).average().getAsDouble()) + "\n" + "全班总分中位数：" + medimum;
         System.out.print(res + "\n");

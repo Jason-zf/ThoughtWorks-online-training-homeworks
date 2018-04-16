@@ -31,10 +31,6 @@ public class Student {
         return subjects;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -48,9 +44,9 @@ public class Student {
     }
 
     public String getDisplay() {
-        String res = this.getName();
+        String res = name;
         for (Subject subject : subjects) {
-            res = res + "|" + String.valueOf(subject.getDisplay());
+            res = res + "|" + subject.getDisplay();
         }
         res = res + "|" + numberToString(getTotalScore() / subjects.size()) + "|" + numberToString(getTotalScore()) + "\n";
         return res;

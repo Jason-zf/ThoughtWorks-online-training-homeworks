@@ -29,7 +29,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_add_student_successfully_when_add() {
+    public void should_return_true_when_add_correct_student_info() {
         assertTrue(classUnderTest.add(string));
     }
 
@@ -42,12 +42,18 @@ public class LibraryTest {
     }
 
     @Test
-    public void should_output_correct_info_when_print_transcript() {
+    public void should_print_correct_info_when_print_transcript() {
         classUnderTest.add(string);
         classUnderTest.add(string1);
         classUnderTest.print("2015124001，2015124002，2015124005");
 
-        String systemOut = "成绩单\n" + "姓名|语文|数学|英语|平均分|总分\n" + "========================\n" + "张小明|90|95|85|90|270\n" + "李小鹏|80.5|89|90|86.5|259.5\n" + "========================\n" + "全班总分平均数：264.75\n" +
+        String systemOut = "成绩单\n" +
+                "姓名|语文|数学|英语|平均分|总分\n" +
+                "========================\n" +
+                "张小明|90|95|85|90|270\n" +
+                "李小鹏|80.5|89|90|86.5|259.5\n" +
+                "========================\n" +
+                "全班总分平均数：264.75\n" +
                 "全班总分中位数：264.75\n";
         assertEquals(outContent.toString().endsWith(systemOut), true);
     }

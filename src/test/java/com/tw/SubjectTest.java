@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -24,5 +25,11 @@ public class SubjectTest {
     public void should_return_score_when_get_subject_score() {
         assertTrue(subject.getScore() == 90);
     }
+
+    @Test
+    public void should_return_true_when_one_subject_equals_to_same_subject() {
+        assertEquals(subject, new Subject("语文", 90));
+    }
+
 
 }
