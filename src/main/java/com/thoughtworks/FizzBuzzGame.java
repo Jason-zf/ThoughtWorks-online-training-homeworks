@@ -3,6 +3,8 @@ package com.thoughtworks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class FizzBuzzGame {
@@ -26,15 +28,8 @@ public class FizzBuzzGame {
     }
 
     public List<String> getResults() {
-        List<String> results = new ArrayList<>();
-        for (Integer i = 1; i <= count; ++i) {
-            String singleResult = getSingleResult(i);
-            if (!singleResult.isEmpty()) {
-                results.add(singleResult);
-                continue;
-            }
-            results.add(i.toString());
-        }
+        IntStream intStream = IntStream.range(1, count + 1);
+        results = intStream.boxed().map(integer -> (getSingleResult(integer).isEmpty() == true ? integer.toString() : getSingleResult(integer))).collect(Collectors.toList());
         return results;
     }
 
