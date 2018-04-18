@@ -17,8 +17,7 @@ public class PriceCalculator {
     public BigDecimal calculate() {
         BigDecimal subTotal = calculateSubTotal();
         subTotal = subtractDiscount(subTotal);
-        BigDecimal grandTotal = addTax(subTotal);
-        return grandTotal;
+        return addTax(subTotal);
     }
 
     public BigDecimal calculateSubTotal() {
@@ -38,8 +37,7 @@ public class PriceCalculator {
 
     public BigDecimal addTax(BigDecimal subTotal) {
         BigDecimal tax = subTotal.multiply(this.tax);
-        BigDecimal grandTotal = subTotal.add(tax);
-        return grandTotal;
+        return subTotal.add(tax);
     }
 
 }
