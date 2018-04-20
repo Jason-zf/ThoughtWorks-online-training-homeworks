@@ -25,7 +25,7 @@ public class Game {
     @Inject
     public Game(AnswerGenerator answerGenerator) throws OutOfRangeAnswerException {
         this.actualAnswer = answerGenerator.generate();
-        this.guessResults = new ArrayList();
+        this.guessResults = new ArrayList<>();
     }
 
     public GuessResult guess(Answer inputAnswer) {
