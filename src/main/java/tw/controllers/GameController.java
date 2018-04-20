@@ -1,6 +1,7 @@
 package tw.controllers;
 
 import com.google.inject.Inject;
+import tw.core.Answer;
 import tw.core.Game;
 import tw.commands.InputCommand;
 import tw.core.model.GuessResult;
@@ -27,7 +28,7 @@ public class GameController {
 
     public void play(InputCommand command) throws IOException {
 
-        if (game.checkCoutinue()) {
+        if (game.checkContinue()) {
             GuessResult guessResult = game.guess(command.input());
             gameView.showGuessResult(guessResult);
             gameView.showGuessHistory(game.guessHistory());
