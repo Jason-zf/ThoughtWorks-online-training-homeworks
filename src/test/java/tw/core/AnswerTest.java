@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * 在AnswerTest文件中完成Answer中对应的单元测试
@@ -70,10 +71,11 @@ public class AnswerTest {
         try {
             answer.validate();
         } catch (OutOfRangeAnswerException e) {
-            num++;
+            num = 1;
         }
 
         assertEquals(0, num);
+        assertNotEquals(1, num);
     }
 
     @Test

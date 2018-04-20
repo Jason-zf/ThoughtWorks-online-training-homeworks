@@ -9,9 +9,7 @@ import tw.core.model.GuessResult;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -41,9 +39,10 @@ public class GameTest {
             game = new Game(answerGenerator);
         } catch (OutOfRangeAnswerException e) {
             e.printStackTrace();
-            num++;
+            num=1;
         }
         assertEquals(0, num);
+        assertNotEquals(1, num);
     }
 
     @Test

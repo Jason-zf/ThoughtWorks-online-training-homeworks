@@ -23,7 +23,7 @@ public class RandomIntGeneratorTest {
         String expected = "Can't ask for more numbers than are available";
 
         try {
-            String result = randomIntGenerator.generateNums(2, 10);
+            randomIntGenerator.generateNums(2, 10);
         } catch (IllegalArgumentException error) {
             assertEquals(expected, error.getMessage());
         }

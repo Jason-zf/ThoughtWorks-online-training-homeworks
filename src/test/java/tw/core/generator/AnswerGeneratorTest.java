@@ -6,6 +6,7 @@ import tw.core.Answer;
 import tw.core.exception.OutOfRangeAnswerException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -29,13 +30,15 @@ public class AnswerGeneratorTest {
 
     @Test
     public void should_not_throw_exception_when_generate() {
-        String expected = "";
+        int num = 0;
         try {
             answerGenerator.generate();
         } catch (OutOfRangeAnswerException e) {
             e.printStackTrace();
-            assertEquals(expected, e.getMessage());
+            num = 1;
         }
+        assertEquals(0, num);
+        assertNotEquals(1, num);
     }
 
     @Test
