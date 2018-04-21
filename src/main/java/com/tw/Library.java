@@ -11,16 +11,11 @@ public class Library {
 
     public Library() {
         this.students = new ArrayList<>();
-    }
-
-    public Library(Scanner scanner) {
-        this.students = new ArrayList<>();
-        this.scanner = scanner;
+        this.scanner = new Scanner(System.in);
     }
 
     public void run() {
         System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
-        Scanner scanner = new Scanner(System.in);
         switch (Integer.valueOf(scanner.next())) {
             case 1:
                 System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
