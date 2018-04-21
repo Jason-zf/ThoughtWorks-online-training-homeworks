@@ -7,34 +7,45 @@ import java.util.regex.Pattern;
 
 public class Library {
     private List<Student> students;
+    private Scanner scanner;
 
     public Library() {
-        students = new ArrayList<>();
-        System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
+        this.students = new ArrayList<>();
     }
 
-    public void accept(int commandNum) {
+    public Library(Scanner scanner) {
+        this.students = new ArrayList<>();
+        this.scanner = scanner;
+    }
+
+    public void run() {
+        System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
         Scanner scanner = new Scanner(System.in);
-        switch (commandNum) {
+        switch (Integer.valueOf(scanner.next())) {
             case 1:
                 System.out.print("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n");
-                if (add(scanner.next())) {
-                    System.out.print("1. 添加学生\n" + "2. 生成成绩单\n" + "3. 退出\n" + "请输入你的选择（1～3）：\n");
+                String stuInfo = scanner.next();
+                while (addStudent(stuInfo) == false) {
+                    System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
+                    stuInfo = scanner.next();
                 }
                 break;
             case 2:
                 System.out.print("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
-                print(scanner.next());
+                String stuID = scanner.next();
+                while (print(stuID) == false) {
+                    System.out.print("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
+                    stuID = scanner.next();
+                }
                 break;
             case 3:
                 System.exit(0);
         }
     }
 
-    public boolean add(String string) {
+    public boolean addStudent(String string) {
         String pattern = "[\\u4e00-\\u9fa5]*\\，\\d*\\，([\\u4e00-\\u9fa5]*\\：\\d+(\\.\\d)?\\，)+([\\u4e00-\\u9fa5]*\\：\\d+(\\.\\d)?)";
         if (!Pattern.matches(pattern, string)) {
-            System.out.print("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n");
             return false;
         }
         String[] stuInfo = string.split("，");
@@ -51,7 +62,6 @@ public class Library {
     public boolean print(String string) {
         String pattern = "(\\d*(\\.\\d*)?\\，)+(\\d*(\\.\\d*)?)";
         if (!Pattern.matches(pattern, string)) {
-            System.out.print("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n");
             return false;
         }
         String[] strings = string.split("，");
