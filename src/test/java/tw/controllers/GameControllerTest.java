@@ -6,9 +6,6 @@ import tw.commands.GuessInputCommand;
 import tw.core.Answer;
 import tw.core.Game;
 import tw.core.GameStatus;
-import tw.core.exception.OutOfRangeAnswerException;
-import tw.core.generator.AnswerGenerator;
-import tw.core.generator.RandomIntGenerator;
 import tw.core.model.GuessResult;
 import tw.views.GameView;
 
@@ -18,7 +15,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -26,10 +22,10 @@ import static org.mockito.Mockito.*;
  */
 public class GameControllerTest {
     private GameController gameController;
-    ByteArrayOutputStream outputStream;
-    GuessInputCommand guessInputCommand;
-    Game game;
-    GameView gameView;
+    private ByteArrayOutputStream outputStream;
+    private GuessInputCommand guessInputCommand;
+    private Game game;
+    private GameView gameView;
 
 
     @Before
