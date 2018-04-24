@@ -13,8 +13,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -27,6 +28,12 @@ public class GameControllerTest {
     private Game game;
     private GameView gameView;
 
+    private boolean compareTwoStringIgnoreNewlineBreak(String string1, String string2) {
+        Pattern pattern = Pattern.compile("\r|\r\n|\n");
+        string1 = pattern.matcher(string1).replaceAll("");
+        string2 = pattern.matcher(string2).replaceAll("");
+        return string1.equals(string2);
+    }
 
     @Before
     public void setGameController() {
@@ -43,30 +50,30 @@ public class GameControllerTest {
 
         gameController.beginGame();
 
-        String expected = "------Guess Number Game, You have 6 chances to guess!  ------\r\n";
-        assertEquals(expected, outputStream.toString());
+        String expected = "------Guess Number Game, You have 6 chances to guess!  ------";
+        assertTrue(compareTwoStringIgnoreNewlineBreak(expected, outputStream.toString()));
     }
 
     @Test
     public void should_print_fail_when_game_status_is_fail() throws IOException {
-        String expected = "Game Status: fail\r\n";
+        String expected = "Game Status: fail";
 
         when(game.checkContinue()).thenReturn(false);
         when(game.checkStatus()).thenReturn(GameStatus.FAIL);
 
         gameController.play(guessInputCommand);
-        assertEquals(expected, outputStream.toString());
+        assertTrue(compareTwoStringIgnoreNewlineBreak(expected, outputStream.toString()));
     }
 
     @Test
     public void should_return_success_when_game_status_is_success() throws IOException {
-        String expected = "Game Status: success\r\n";
+        String expected = "Game Status: success";
 
         when(game.checkContinue()).thenReturn(false);
         when(game.checkStatus()).thenReturn(GameStatus.SUCCESS);
 
         gameController.play(guessInputCommand);
-        assertEquals(expected, outputStream.toString());
+        assertTrue(compareTwoStringIgnoreNewlineBreak(expected, outputStream.toString()));
     }
 
     @Test
@@ -80,9 +87,8 @@ public class GameControllerTest {
         when(game.guessHistory()).thenReturn(Arrays.asList(guessResult));
 
         gameController.play(guessInputCommand);
-        String expected = "Guess Result: 1A0B\r\n" + "Guess History:\r\n" + "[Guess Numbers: 1 5 6 7, Guess Result: 1A0B]\r\n" + "Game Status: continue\r\n";
-        assertEquals(expected, outputStream.toString());
+        String expected = "Guess Result: 1A0B" + "Guess History:" + "[Guess Numbers: 1 5 6 7, Guess Result: 1A0B]" + "Game Status: continue";
+        assertTrue(compareTwoStringIgnoreNewlineBreak(expected, outputStream.toString()));
     }
-
 
 }
