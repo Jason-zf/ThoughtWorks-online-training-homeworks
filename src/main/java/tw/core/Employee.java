@@ -13,19 +13,19 @@ public class Employee {
         this.gender = gender;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Integer getId() {
         return id;
     }
 
-    public Integer getAge() {
-        return age;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getGender() {
-        return gender;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
