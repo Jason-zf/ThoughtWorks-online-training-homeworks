@@ -1,10 +1,11 @@
-package tw.core;
+package tw.springboot.core;
 
 public class Employee {
     private Integer id;
     private String name;
     private Integer age;
     private String gender;
+
 
     public Employee(String name, Integer id, Integer age, String gender) {
         this.name = name;
@@ -27,5 +28,17 @@ public class Employee {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public String getGender() {
+        return gender;
     }
 }
