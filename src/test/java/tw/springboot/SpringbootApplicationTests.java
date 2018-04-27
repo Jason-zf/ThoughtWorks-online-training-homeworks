@@ -28,11 +28,6 @@ public class SpringbootApplicationTests {
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(new EmployeesController()).build();
-        requestBuilder = post("/employees/")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\":0,\"name\":\"小明\",\"age\":20,\"gender\":\"男\"}");
-        mvc.perform(requestBuilder);
     }
 
     @Test
@@ -40,7 +35,7 @@ public class SpringbootApplicationTests {
         requestBuilder = get("/employees/");
         mvc.perform(requestBuilder)
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[{\"id\":0,\"name\":\"小明\",\"age\":20,\"gender\":\"男\"}]")));
+                .andExpect(content().string(equalTo("[{\"id\":0,\"name\":\"小明\",\"age\":20,\"gender\":\"男\"},{\"id\":1,\"name\":\"小红\",\"age\":19,\"gender\":\"女\"},{\"id\":2,\"name\":\"小智\",\"age\":15,\"gender\":\"男\"},{\"id\":3,\"name\":\"小刚\",\"age\":16,\"gender\":\"男\"},{\"id\":4,\"name\":\"小霞\",\"age\":15,\"gender\":\"女\"}]")));
     }
 
     @Test
@@ -56,7 +51,7 @@ public class SpringbootApplicationTests {
         requestBuilder = post("/employees/")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\":0,\"name\":\"小明\",\"age\":20,\"gender\":\"男\"}");
+                .content("{\"id\":5,\"name\":\"小超\",\"age\":20,\"gender\":\"男\"}");
         mvc.perform(requestBuilder)
                 .andExpect(content().string(equalTo("add success")));
     }
