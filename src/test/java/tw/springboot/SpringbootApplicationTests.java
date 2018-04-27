@@ -74,6 +74,9 @@ public class SpringbootApplicationTests {
                 .param("gender", "女");
         mvc.perform(requestBuilder)
                 .andExpect(content().string(equalTo("update success")));
+        requestBuilder = get("/employees/0");
+        mvc.perform(requestBuilder)
+                .andExpect(content().string(equalTo("{\"id\":0,\"name\":\"小红\",\"age\":20,\"gender\":\"女\"}")));
     }
 
 }

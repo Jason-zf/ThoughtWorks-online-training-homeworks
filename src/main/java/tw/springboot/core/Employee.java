@@ -6,6 +6,13 @@ public class Employee {
     private Integer age;
     private String gender;
 
+    public Employee() {
+        this.id = 0;
+        this.name = "name";
+        this.age = 0;
+        this.gender = "男";
+    }
+
     public Employee(Integer id, String name, Integer age, String gender) {
         this.id = id;
         this.name = name;
