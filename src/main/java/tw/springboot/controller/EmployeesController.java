@@ -1,9 +1,11 @@
 package tw.springboot.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import tw.springboot.core.Employee;
 
 import java.util.*;
+
 
 @RestController
 @RequestMapping("/employees")
@@ -50,4 +52,10 @@ public class EmployeesController {
         return "update success";
     }
 
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView index(ModelAndView modelAndView) {
+        modelAndView.setViewName("index");
+        modelAndView.addObject("employees", employees);
+        return modelAndView;
+    }
 }
