@@ -1,0 +1,33 @@
+
+body{
+
+}
+
+table{
+    border-collapse:collapse;
+    width:80%;
+    height:50%;
+    margin:auto;
+    vertical-align:middle;
+}
+table,td{
+    border:1px solid black;
+}
+td{
+    text-align:center;
+    vertical-align:center;
+    text-color:white;
+}
+.first_tr{
+    background-color:black;
+    color:white;
+}
+.odd_tr{
+    background-color:rgb(238,238,238);
+    color:black;
+}
+.even_tr{
+    background-color:white;
+    color:black;
+}
+
