@@ -1,6 +1,6 @@
 
 body{
-
+    align:center;
 }
 
 table{
@@ -8,15 +8,16 @@ table{
     width:80%;
     height:50%;
     margin:auto;
-    vertical-align:middle;
+    align:center;
 }
-table,td{
+table,tr,td{
     border:1px solid black;
 }
 td{
     text-align:center;
     vertical-align:center;
     text-color:white;
+    font-size:25;
 }
 .first_tr{
     background-color:black;

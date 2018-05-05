@@ -54,7 +54,7 @@ public class EmployeesController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("/WEB-INF/jsp/index.jsp");
         modelAndView.addObject("employees", employees);
         return modelAndView;
     }
