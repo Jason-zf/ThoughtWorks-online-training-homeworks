@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Employees</title>
-    <style><%@include file="/WEB-INF/css/tableStyle.css"%></style>
+    <link rel="stylesheet" type="text/css" href="/css/tableStyle.css">
 </head>
 <body>
     <table>
