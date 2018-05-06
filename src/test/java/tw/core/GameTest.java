@@ -19,14 +19,12 @@ import static org.mockito.Mockito.*;
 public class GameTest {
     private Game game;
     private AnswerGenerator answerGenerator;
-    private Game gameSpy;
 
     @Before
     public void setGame() throws OutOfRangeAnswerException {
         answerGenerator = mock(AnswerGenerator.class);
         when(answerGenerator.generate()).thenReturn(Answer.createAnswer("1 2 3 4"));
-        game = new Game(answerGenerator);
-        gameSpy = spy(game);
+        game = spy(new Game(answerGenerator));
     }
 
     @Test
@@ -80,27 +78,29 @@ public class GameTest {
     }
 
     @Test
-    public void should_return_fail_when_check_status_is_fail() {
+    public void should_return_fail_when_num_of_input_results_equal_or_more_than_6() {
         for (int i = 0; i < 6; ++i) {
             game.guess(Answer.createAnswer("1 2 3 5"));
         }
+        assertEquals("fail", game.checkStatus());
 
+        game.guess(Answer.createAnswer("1 2 3 5"));
         assertEquals("fail", game.checkStatus());
     }
 
     @Test
     public void should_return_true_when_checkContinue_status_is_continue() {
-        when(gameSpy.checkStatus()).thenReturn(GameStatus.CONTINUE);
+        when(game.checkStatus()).thenReturn(GameStatus.CONTINUE);
 
         assertTrue(game.checkContinue());
     }
 
     @Test
     public void should_return_false_when_checkContinue_status_is_fail_or_success() {
-        when(gameSpy.checkStatus()).thenReturn(GameStatus.FAIL).thenReturn(GameStatus.SUCCESS);
+        when(game.checkStatus()).thenReturn(GameStatus.FAIL).thenReturn(GameStatus.SUCCESS);
 
-        assertFalse(gameSpy.checkContinue());
-        assertFalse(gameSpy.checkContinue());
+        assertFalse(game.checkContinue());
+        assertFalse(game.checkContinue());
     }
 
     @Test
