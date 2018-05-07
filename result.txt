@@ -19,15 +19,23 @@ select c.name as companyName,t.name from company c join (select name,companyId,m
 +-------------+----------+
 
 practice3
-select c.name as companyName,t.avgSalary from company c join( select companyId,avg(salary)as avgSalary from employee group by companyId) t on c.id=t.companyId;
+select * from ( select c.name as companyName,t.avgSalary from company c join( select companyId,avg(salary)as avgSalary from employee group by companyId) t on c.id=t.companyId) c1 order by c1.avgSalary desc limit 1;
 
 +-------------+-----------+
 | companyName | avgSalary |
 +-------------+-----------+
-| baidu       | 5000.0000 |
-| alibaba     | 6500.0000 |
 | tengxun     | 8000.0000 |
 +-------------+-----------+
+
+practice4
+select e.*,t2.companyName,t2.avgsal from employee e join (select c.id, c.name as companyName,t.avgsal from company c join( select companyId,avg(salary)as avgsal from employee group by companyId) t on c.id=t.companyId) t2 on e.companyId=t2.id and e.salary>t2.avgsal;
+
++----+----------+------+--------+-----------+--------+-------------+-----------+
+| id | name     | age  | gender | companyId | salary | companyName | avgsal    |
++----+----------+------+--------+-----------+--------+-------------+-----------+
+|  0 | xiaoming |   20 | male   |         0 |   6000 | baidu       | 5000.0000 |
+|  1 | xiaohong |   19 | female |         1 |   7000 | alibaba     | 6500.0000 |
++----+----------+------+--------+-----------+--------+-------------+-----------+
 
 
 
