@@ -1,5 +1,21 @@
+practice1
+select * from employee where (name like 'n%' or name like '%n' or name like '%n%') and salary>6000;
+
 +----+----------+------+--------+-----------+--------+
 | id | name     | age  | gender | companyId | salary |
 +----+----------+------+--------+-----------+--------+
 |  1 | xiaohong |   19 | female |         1 |   7000 |
 +----+----------+------+--------+-----------+--------+
+
+practice2
+select c.name as companyName,t.name from company c join (select name,companyId,max(salary) as maxsalary  from employee group by companyId) t on t.companyId=c.id;
+
++-------------+----------+
+| companyName | name     |
++-------------+----------+
+| baidu       | xiaoming |
+| alibaba     | xiaohong |
+| tengxun     | xiaozhi  |
++-------------+----------+
+
+
