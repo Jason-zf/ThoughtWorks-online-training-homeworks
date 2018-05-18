@@ -64,6 +64,7 @@ public class EmployeeJPATest {
         //注意：PageRequest的构造方法已经弃用了代替的是PageRequest.of,并且最后一个参数代表按照table中的哪一个字段排序
         Page<Employee> EmployeePage = employeeRepository.findAll(PageRequest.of(3, 2, Sort.Direction.DESC, "salary"));
         assertThat(EmployeePage.getTotalPages()).isEqualTo(3);
+        assertThat(EmployeePage.getContent().size()).isEqualTo(5);
     }
 
     @Test
@@ -78,7 +79,7 @@ public class EmployeeJPATest {
     public void should_return_influence_lines_when_update_employee_name() throws Exception {
         //6.将xiaohong的名字改成xiaobai,输出这次修改影响的行数
         Integer expectedLine = 1;
-        Integer actualLine = null;
+        Integer actualLine = employeeRepository.updateByName("xiaohong", "xiaobai");
         assertThat(actualLine).isEqualTo(expectedLine);
     }
 
@@ -86,7 +87,8 @@ public class EmployeeJPATest {
     public void should_deleted_employee_when_given_employee_name() throws Exception {
         //7.删除姓名是xiaohong的employee
         Employee expectedEmployee = new Employee(1, "xiaohong", 19, "female", 1, 7000);
-        Employee actualEmployee = null;
+        employeeRepository.deleteByName("xiaohong");
+        Employee actualEmployee = employeeRepository.findByName("xiaohong");
         assertThat(actualEmployee).isNull();
     }
 }
