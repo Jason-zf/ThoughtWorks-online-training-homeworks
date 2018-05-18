@@ -10,12 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
@@ -57,7 +52,7 @@ public class EmployeeJPATest {
     public void should_return_employee_name_when_employee_salary_is_max_and_given_company_id_() throws Exception {
         //3.找出一个薪资最高且公司ID是1的雇员以及该雇员的name
         Employee expectedEmployee = new Employee(1, "xiaohong", 19, "female", 1, 7000);
-        String actualName = null;
+        String actualName = employeeRepository.findFirstByCompanyIdOrderBySalaryDesc(1).getName();
         assertThat(actualName).isEqualTo(expectedEmployee.getName());
     }
 
