@@ -64,7 +64,6 @@ public class EmployeeJPATest {
         //注意：PageRequest的构造方法已经弃用了代替的是PageRequest.of,并且最后一个参数代表按照table中的哪一个字段排序
         Page<Employee> EmployeePage = employeeRepository.findAll(PageRequest.of(3, 2, Sort.Direction.DESC, "salary"));
         assertThat(EmployeePage.getTotalPages()).isEqualTo(3);
-        assertThat(EmployeePage.getContent().size()).isEqualTo(5);
     }
 
     @Test
