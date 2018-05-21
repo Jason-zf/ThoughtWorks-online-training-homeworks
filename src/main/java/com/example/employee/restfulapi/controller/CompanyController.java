@@ -3,11 +3,16 @@ package com.example.employee.restfulapi.controller;
 import com.example.employee.restfulapi.entity.Company;
 import com.example.employee.restfulapi.entity.Employee;
 import com.example.employee.restfulapi.repository.CompanyRepository;
+import com.sun.jndi.toolkit.dir.SearchFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -31,6 +36,11 @@ public class CompanyController {
         return companyRepository.findOne(id).getEmployees();
     }
 
+    @RequestMapping(value = "/page/{pageNumber}/size/{pageSize}", method = RequestMethod.GET)
+    public Page<Company> findAllByPages(@PathVariable Integer pageNumber, @PathVariable Integer pageSize) {
+        return companyRepository.findAll(new PageRequest(pageNumber - 1, pageSize, Sort.Direction.ASC, "id"));
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void addOne(@RequestBody Company company) {
         companyRepository.saveAndFlush(company);
@@ -48,6 +58,5 @@ public class CompanyController {
     public void deleteOne(@PathVariable Long id) {
         companyRepository.delete(id);
     }
-
 
 }
