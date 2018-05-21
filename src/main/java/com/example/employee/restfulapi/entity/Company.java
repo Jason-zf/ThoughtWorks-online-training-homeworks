@@ -13,6 +13,10 @@ public class Company {
     private String companyName;
     private Integer employeesNumber;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "companyId")
+    private Set<Employee> employees = new HashSet<>();
+
     public Company() {
     }
 
@@ -43,5 +47,9 @@ public class Company {
 
     public void setEmployeesNumber(Integer employeesNumber) {
         this.employeesNumber = employeesNumber;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 }
