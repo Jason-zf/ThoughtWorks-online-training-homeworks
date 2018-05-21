@@ -36,27 +36,32 @@ public class CompanyController {
         return companyRepository.findOne(id).getEmployees();
     }
 
-    @RequestMapping(value = "/page/{pageNumber}/size/{pageSize}", method = RequestMethod.GET)
+    @RequestMapping(value = "/page/{pageNumber}/pageSize/{pageSize}", method = RequestMethod.GET)
     public Page<Company> findAllByPages(@PathVariable Integer pageNumber, @PathVariable Integer pageSize) {
         return companyRepository.findAll(new PageRequest(pageNumber - 1, pageSize, Sort.Direction.ASC, "id"));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void addOne(@RequestBody Company company) {
+    public String addOne(@RequestBody Company company) {
         companyRepository.saveAndFlush(company);
+        return "add " + company.getCompanyName() + " success!";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void updataOne(@PathVariable Long id, @RequestBody Company company) {
+    public String updataOne(@PathVariable Long id, @RequestBody Company company) {
         Company company1 = companyRepository.findOne(id);
+        String res = "update " + company1.getCompanyName() + " success!";
         company1.setCompanyName(company.getCompanyName());
         company1.setEmployeesNumber(company.getEmployeesNumber());
         companyRepository.saveAndFlush(company1);
+        return res;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteOne(@PathVariable Long id) {
+    public String deleteOne(@PathVariable Long id) {
+        String res = "delete " + companyRepository.findOne(id).getCompanyName() + " success!";
         companyRepository.delete(id);
+        return res;
     }
 
 }

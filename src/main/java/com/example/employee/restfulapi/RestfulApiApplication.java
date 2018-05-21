@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestfulApiApplication {
 
     public static void main(String[] args) {
-//        Flyway flyway = new Flyway();
-//        flyway.setDataSource("jdbc:mysql://localhost:3306/employee_db", "root", "root");
-//        flyway.clean();
-//        flyway.migrate();
+        Flyway flyway = new Flyway();
+        flyway.setDataSource("jdbc:mysql://localhost:3306/employee_db", "root", "root");
+        flyway.clean();
+        flyway.migrate();
         SpringApplication.run(RestfulApiApplication.class, args);
     }
 }
