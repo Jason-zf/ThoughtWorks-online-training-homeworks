@@ -62,7 +62,7 @@ public class EmployeeJPATest {
     public void should_return_employee_list_when_input_page_request() throws Exception {
         //4.实现对Employee的分页查询，每页两条数据，一共三页数。
         //注意：PageRequest的构造方法已经弃用了代替的是PageRequest.of,并且最后一个参数代表按照table中的哪一个字段排序
-        Page<Employee> EmployeePage = employeeRepository.findAll(PageRequest.of(3, 2, Sort.Direction.DESC, "salary"));
+        Page<Employee> EmployeePage = employeeRepository.findAll(PageRequest.of(2, 2, Sort.Direction.DESC, "salary"));
         assertThat(EmployeePage.getTotalPages()).isEqualTo(3);
     }
 
