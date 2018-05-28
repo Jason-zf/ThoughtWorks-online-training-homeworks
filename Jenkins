@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage('Declarative:Checkout SCM'){
+            echo 'declarative:checkout scm...'
+        }
+        stage('build'){
+            echo 'building...'
+        }
+        stage('Test'){
+            echo 'testing...'
+        }
+    }
+
+}
