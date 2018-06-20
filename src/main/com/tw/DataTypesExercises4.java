@@ -12,7 +12,7 @@ public class DataTypesExercises4 {
         Integer totalDays = minutes / 1440;
         Integer years = totalDays / 365;
         Integer days = totalDays % 365;
-        System.out.print("Expected Output :");
+        System.out.print("Expected Output :\n");
         System.out.print(minutes + " minutes is approximately " + years + " years and " + days + " days");
     }
 }
