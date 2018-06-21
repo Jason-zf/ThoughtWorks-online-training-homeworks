@@ -8,14 +8,14 @@ public class DateTimes1 {
         int month = 5;  //June
         int date = 21;
 
-        Calendar cal = Calendar.getInstance();
-        cal.clear();
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
 
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month);
-        cal.set(Calendar.DATE, date);
-        cal.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DATE, date);
+        calendar.setTimeInMillis(System.currentTimeMillis());
 
-        System.out.println(cal.getTime());
+        System.out.println(calendar.getTime());
     }
 }
