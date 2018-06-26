@@ -6,16 +6,15 @@ public class Numbers15 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input a number : ");
-        int num = scanner.nextInt();
-        if (isDuckNum(num)) {
+        String numStr = scanner.nextLine();
+        if (isDuckNum(numStr)) {
             System.out.println("Duck number");
         } else {
             System.out.println("Not a duck number");
         }
     }
 
-    private static boolean isDuckNum(int num) {
-        String string = Integer.toString(num);
-        return string.contains("0") && (!string.startsWith("0"));
+    private static boolean isDuckNum(String numStr) {
+        return numStr.contains("0") && (!numStr.startsWith("0"));
     }
 }
