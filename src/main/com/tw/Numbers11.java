@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Numbers11 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Input a number : ");
-        int num = sc.nextInt();
+        int num = scanner.nextInt();
         if (isDisariumNum(num)) {
             System.out.println("Disarium Number.");
         } else {

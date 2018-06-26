@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Numbers12 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Input a number : ");
-        int num = sc.nextInt();
+        int num = scanner.nextInt();
         if (isHarshadNum(num)) {
             System.out.println(num + " is a Harshad Number.");
         } else {
