@@ -11,7 +11,7 @@ public class DateTimes36 {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         String javaDate = simpleDateFormat.format(date);
-        
+
         System.out.println(javaDate);
     }
 }
