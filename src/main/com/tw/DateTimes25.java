@@ -4,10 +4,10 @@ import java.time.Year;
 
 public class DateTimes25 {
     public static void main(String[] args) {
-        Year currYear = Year.now();
+        Year year = Year.now();
 
-        System.out.println("Current Year:" + currYear);
-        System.out.println("Is current year leap year? " + currYear.isLeap());
-        System.out.println("Length of the year:" + currYear.length());
+        System.out.println("Current Year:" + year);
+        System.out.println("Is current year leap year? " + year.isLeap());
+        System.out.println("Length of the year:" + year.length());
     }
 }
