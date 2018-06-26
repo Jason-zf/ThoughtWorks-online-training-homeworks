@@ -13,7 +13,7 @@ public class Numbers9 {
         }
     }
 
-    private static boolean isHappyNum(long num) {
+    public static boolean isHappyNum(long num) {
         long sum = 0;
         int digit = 0;
         HashSet<Long> hashSet = new HashSet<>();
