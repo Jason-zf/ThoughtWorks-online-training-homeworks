@@ -11,7 +11,5 @@ public class Numbers3 {
         int max = scanner.nextInt();
         int random = min + (int) (Math.random() * (max - min + 1));
         System.out.println("A random integer between " + min + " and " + max + " is " + random + ".0");
-
-
     }
 }
