@@ -53,7 +53,6 @@ public class Numbers28 {
         }
 
         public Stream advance() {
-            // memoized value for the next stream instance.
             if (m_advance != null) {
                 return m_advance;
             }
@@ -68,14 +67,12 @@ public class Numbers28 {
                 }
             }
             RegularStream ret = new RegularStream(m_streams, next);
-            // memoize the value!
             m_advance = ret;
             m_streams[minidx].advance();
             return ret;
         }
 
         private BigInteger nextStreamValue(int streamidx) {
-            // skip past duplicates in the streams we're merging.
             BigInteger ret = m_streams[streamidx].value();
             while (ret.equals(m_val)) {
                 m_streams[streamidx] = m_streams[streamidx].advance();
