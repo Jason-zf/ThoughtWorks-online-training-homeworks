@@ -7,25 +7,23 @@ import java.io.IOException;
 
 public class InputOutputFileSystem16 {
     public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         String strLine = "";
         try {
             String filename = "./test.txt";
-            FileWriter fw = new FileWriter(filename, true);
-            //appends the string to the file
-            fw.write("Java Exercises\n");
-            fw.close();
-            BufferedReader br = new BufferedReader(new FileReader("./test.txt"));
-            //read the file content
+            FileWriter fileWriter = new FileWriter(filename, true);
+            fileWriter.write("Java Exercises\n");
+            fileWriter.close();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("./test.txt"));
             while (strLine != null) {
-                sb.append(strLine);
-                sb.append(System.lineSeparator());
-                strLine = br.readLine();
+                stringBuilder.append(strLine);
+                stringBuilder.append(System.lineSeparator());
+                strLine = bufferedReader.readLine();
                 if (strLine != null) {
                     System.out.println(strLine);
                 }
             }
-            br.close();
+            bufferedReader.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
         }
