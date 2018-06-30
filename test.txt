@@ -1,7 +1,1 @@
-Hello world!
-Line one
-Line two
-Line three
-Line four
-Line five
-The end!
+Python Exercises
